@@ -79,7 +79,7 @@ const sampleItems = [
 
   {
     id: 23,
-    title: "Pasta Primavera",
+    title: "Pasta Primavera at a Trattoria",
     description: "Fresh pasta with seasonal vegetables",
     price: 30,
     category: "dining",
@@ -88,8 +88,8 @@ const sampleItems = [
   },
   {
     id: 24,
-    title: "A bottle of Posh Red",
-    description: "A luxurious and bold red wine",
+    title: "A Bottle of Posh Red",
+    description: "Something a bit fancier than your average drop",
     price: 35,
     category: "drinks",
     image_url: "https://images.unsplash.com/photo-1714377769989-140c9e47fbb9?w=500&h=400&fit=crop",
@@ -124,11 +124,12 @@ const sampleItems = [
     image_url: "https://images.unsplash.com/photo-1532460734809-e7f8475ca917?w=500&h=400&fit=crop",
     is_purchased: false
   },
-  { id: 25,
-    title: "Cycling the back roads",
+  {
+    id: 25,
+    title: "Cycling the Back Roads",
     description: "Explore the scenic countryside on a guided bike tour",
     price: 70,
-    category: "experiences",
+    category: "transport",
     image_url: "https://plus.unsplash.com/premium_photo-1684274186180-026782ae24ab?w=500&h=400&fit=crop",
     is_purchased: false
   },
@@ -188,7 +189,7 @@ const sampleItems = [
   },
   {
     id: 22,
-    title: "Flat in central Firenze",
+    title: "Flat in Central Firenze",
     description: "Charming apartment in the heart of Florence",
     price: 150,
     category: "accommodation",
