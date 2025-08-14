@@ -11,9 +11,9 @@ const categoryTitles = {
   donations: "General Contributions",
   drinks: "Aperitivo & Drinks",
   dining: "Culinary Adventures", 
-  transport: "Getting Around",
+  transport: "La Strada (Getting Around)",
   accommodation: "Romantic Stays",
-  experiences: "Food & Culture"
+  experiences: "Food & Culture Experiences"
 };
 
 export default function DonationGrid() {
@@ -68,8 +68,8 @@ export default function DonationGrid() {
   
   // Safe calculations - exclude custom donations from totals
   const regularItems = items.filter(item => item && !item.is_custom);
-  const totalRaised = regularItems.reduce((sum, item) => sum + (item.current_amount || 0), 0);
-  const totalGoal = regularItems.reduce((sum, item) => sum + (item.target_amount || 0), 0);
+  const totalRaised = DonationItem.getTotalRaised(items);
+  const totalGoal = DonationItem.getTotalTarget(); // Hardcoded £2,000
   const fullyFundedCount = regularItems.filter(item => DonationItem.isFullyFunded(item)).length;
   const totalContributors = regularItems.reduce((total, item) => {
     if (!item) return total;
@@ -101,7 +101,7 @@ export default function DonationGrid() {
         </h2>
         <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
           Your presence at our wedding is the greatest gift, but if you'd like to contribute to our Italian culinary adventure, 
-          every contribution helps us create delicious memories together. Choose any amount that feels right for you!
+          we'd be incredibly grateful. We're aiming for £2,000 to help us create delicious memories together!
         </p>
         
         {/* Overall Progress */}
@@ -143,7 +143,7 @@ export default function DonationGrid() {
             </div>
           </div>
           <p className="text-sm text-gray-600">
-            Goal: £{totalGoal.toLocaleString()} for our complete Italian adventure
+            Target: £{totalGoal.toLocaleString()} for our Italian honeymoon adventure
           </p>
         </div>
       </div>
