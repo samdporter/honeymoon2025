@@ -1,200 +1,158 @@
+// Make sure this file exists: src/components/CustomDonationCard.jsx
+
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Heart, ExternalLink, Check, Users, Target } from "lucide-react";
-import { DonationItem } from "@/entities/DonationItem";
+import { Heart, ExternalLink, Gift } from "lucide-react";
 
-export default function DonationCard({ item, onContribution }) {
-  const [isContributing, setIsContributing] = useState(false);
+export default function CustomDonationCard() {
   const [customAmount, setCustomAmount] = useState('');
-  const [showCustomInput, setShowCustomInput] = useState(false);
-  
-  const progress = DonationItem.getProgress(item);
-  const remainingContributions = DonationItem.getContributionsRemaining(item);
-  const isFullyFunded = DonationItem.isFullyFunded(item);
-  const contributionsMade = Math.floor(item.current_amount / item.unit_price);
+  const [selectedAmount, setSelectedAmount] = useState(null);
+  const [isContributing, setIsContributing] = useState(false);
 
-  const handleDonate = (amount = item.unit_price) => {
+  const quickAmounts = [10, 25, 50, 75, 100, 150];
+
+  const handleDonate = (amount) => {
     setIsContributing(true);
     
-    // Use Sam's Monzo details
-    const description = `${item.title} - £${amount}`;
+    const description = `Italian Honeymoon Fund - £${amount}`;
     const monzoUrl = `https://monzo.me/samporter29/${amount}?d=${encodeURIComponent(description)}`;
     window.open(monzoUrl, '_blank', 'noopener,noreferrer');
     
-    // Simulate the contribution being processed
     setTimeout(() => {
-      if (onContribution) {
-        onContribution(item.id, amount);
-      }
       setIsContributing(false);
+      setCustomAmount('');
+      setSelectedAmount(null);
     }, 1000);
   };
 
   const handleCustomDonation = () => {
     const amount = parseFloat(customAmount);
-    if (amount && amount > 0 && amount <= 500) {
+    if (amount && amount > 0 && amount <= 1000) {
       handleDonate(amount);
-      setCustomAmount('');
-      setShowCustomInput(false);
     }
   };
 
+  const finalAmount = selectedAmount || parseFloat(customAmount) || 0;
+
   return (
-    <Card className="group h-full bg-white/80 backdrop-blur-sm border-green-100/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+    <Card className="group h-full bg-gradient-to-br from-white/90 to-green-50/80 backdrop-blur-sm border-green-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
       <CardContent className="p-0 h-full flex flex-col">
-        {/* Image */}
-        <div className="relative overflow-hidden rounded-t-lg aspect-[4/3]">
-          {item.image_url ? (
-            <img 
-              src={item.image_url}
-              alt={item.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          ) : (
-            <div className="w-full h-full bg-gradient-to-br from-green-200 to-yellow-200 flex items-center justify-center">
-              <Heart className="w-12 h-12 text-white/70" />
+        {/* Header */}
+        <div className="relative overflow-hidden rounded-t-lg bg-gradient-to-br from-green-500 to-red-500 p-8 text-center">
+          <div className="relative z-10">
+            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Gift className="w-8 h-8 text-white" />
             </div>
-          )}
-          
-          {isFullyFunded && (
-            <div className="absolute inset-0 bg-green-500/20 flex items-center justify-center">
-              <div className="bg-white/90 rounded-full p-2">
-                <Check className="w-6 h-6 text-green-600" />
-              </div>
-            </div>
-          )}
-          
-          <div className="absolute top-3 right-3 flex flex-col gap-2">
-            <Badge className="bg-white/90 text-gray-800 border-0 font-semibold">
-              £{item.unit_price}
-            </Badge>
-            {item.max_contributions && (
-              <Badge className="bg-blue-100/90 text-blue-800 border-0 text-xs">
-                <Users className="w-3 h-3 mr-1" />
-                {contributionsMade}/{item.max_contributions}
-              </Badge>
-            )}
+            <h3 className="text-2xl font-semibold text-white mb-2">
+              Choose Your Amount
+            </h3>
+            <p className="text-white/90 text-sm">
+              Perfect if you'd like to give a specific amount
+            </p>
           </div>
+          
+          {/* Decorative elements */}
+          <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -translate-y-10 translate-x-10"></div>
+          <div className="absolute bottom-0 left-0 w-16 h-16 bg-white/10 rounded-full translate-y-8 -translate-x-8"></div>
         </div>
 
         {/* Content */}
         <div className="p-6 flex-1 flex flex-col">
-          <div className="flex-1">
-            <h3 className="text-xl font-medium text-gray-800 mb-2 group-hover:text-green-700 transition-colors">
-              {item.title}
-            </h3>
-            
-            {item.description && (
-              <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                {item.description}
-              </p>
-            )}
-
-            {/* Progress Section */}
-            <div className="mb-4 space-y-2">
-              <div className="flex justify-between text-sm text-gray-600">
-                <span>Progress</span>
-                <span>£{item.current_amount} / £{item.target_amount}</span>
-              </div>
-              <div className="w-full bg-gray-100 rounded-full h-2">
-                <div 
-                  className="bg-gradient-to-r from-green-600 to-red-600 h-2 rounded-full transition-all duration-700"
-                  style={{ width: `${progress}%` }}
-                ></div>
-              </div>
-              <div className="flex justify-between text-xs text-gray-500">
-                <span>{Math.round(progress)}% funded</span>
-                {remainingContributions !== null && (
-                  <span>{remainingContributions} spots left</span>
-                )}
-              </div>
+          {/* Quick Amount Buttons */}
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-gray-700 mb-3">
+              Quick amounts:
+            </label>
+            <div className="grid grid-cols-3 gap-2">
+              {quickAmounts.map(amount => (
+                <button
+                  key={amount}
+                  onClick={() => {
+                    setSelectedAmount(amount);
+                    setCustomAmount('');
+                  }}
+                  className={`p-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    selectedAmount === amount
+                      ? "bg-green-600 text-white shadow-md"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  }`}
+                >
+                  £{amount}
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Action Buttons */}
-          <div className="space-y-2">
-            {!isFullyFunded && remainingContributions !== 0 && (
-              <>
-                <Button 
-                  onClick={() => handleDonate()}
-                  disabled={isContributing}
-                  className="w-full bg-gradient-to-r from-green-600 to-red-600 hover:from-green-700 hover:to-red-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
-                >
-                  {isContributing ? (
-                    <>Contributing...</>
-                  ) : (
-                    <>
-                      <Heart className="w-4 h-4 mr-2 fill-current" />
-                      Contribute £{item.unit_price}
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </>
-                  )}
-                </Button>
+          {/* Custom Amount Input */}
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Or enter your own amount:
+            </label>
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">£</span>
+              <input
+                type="number"
+                value={customAmount}
+                onChange={(e) => {
+                  setCustomAmount(e.target.value);
+                  setSelectedAmount(null);
+                }}
+                placeholder="0"
+                min="1"
+                max="1000"
+                className="w-full pl-8 pr-4 py-3 border border-gray-200 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              />
+            </div>
+            <p className="text-xs text-gray-500 mt-1">
+              Minimum £1, maximum £1000
+            </p>
+          </div>
 
-                {/* Custom Amount Option for Donations and Big Items */}
-                {(item.is_donation || item.unit_price >= 50) && (
-                  <>
-                    {!showCustomInput ? (
-                      <Button 
-                        onClick={() => setShowCustomInput(true)}
-                        variant="outline"
-                        className="w-full text-green-700 border-green-200 hover:bg-green-50"
-                      >
-                        <Target className="w-4 h-4 mr-2" />
-                        Choose Amount
-                      </Button>
-                    ) : (
-                      <div className="flex gap-2">
-                        <input
-                          type="number"
-                          value={customAmount}
-                          onChange={(e) => setCustomAmount(e.target.value)}
-                          placeholder="£"
-                          min="5"
-                          max="500"
-                          className="flex-1 px-3 py-2 border border-green-200 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-                        />
-                        <Button 
-                          onClick={handleCustomDonation}
-                          disabled={!customAmount || parseFloat(customAmount) <= 0}
-                          className="bg-green-600 hover:bg-green-700 text-white px-4"
-                        >
-                          Give
-                        </Button>
-                        <Button 
-                          onClick={() => {
-                            setShowCustomInput(false);
-                            setCustomAmount('');
-                          }}
-                          variant="outline"
-                          className="px-3"
-                        >
-                          ×
-                        </Button>
-                      </div>
-                    )}
-                  </>
-                )}
+          {/* Summary */}
+          {finalAmount > 0 && (
+            <div className="mb-6 p-4 bg-green-50 rounded-lg border border-green-100">
+              <div className="flex items-center justify-between">
+                <span className="text-gray-700">Your contribution:</span>
+                <span className="text-2xl font-bold text-green-700">£{finalAmount}</span>
+              </div>
+              <p className="text-sm text-green-600 mt-1">
+                This will help make our Italian adventure even more special! 🇮🇹
+              </p>
+            </div>
+          )}
+
+          {/* Donate Button */}
+          <Button 
+            onClick={() => handleDonate(finalAmount)}
+            disabled={finalAmount <= 0 || finalAmount > 1000 || isContributing}
+            className={`w-full transition-all duration-200 ${
+              finalAmount > 0 && finalAmount <= 1000
+                ? "bg-gradient-to-r from-green-600 to-red-600 hover:from-green-700 hover:to-red-700 text-white shadow-lg hover:shadow-xl"
+                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+            }`}
+          >
+            {isContributing ? (
+              <>Processing...</>
+            ) : finalAmount > 0 ? (
+              <>
+                <Heart className="w-4 h-4 mr-2 fill-current" />
+                Contribute £{finalAmount}
+                <ExternalLink className="w-4 h-4 ml-2" />
+              </>
+            ) : (
+              <>
+                <Heart className="w-4 h-4 mr-2" />
+                Choose an amount above
               </>
             )}
+          </Button>
 
-            {isFullyFunded && (
-              <div className="text-center p-3 bg-green-50 rounded-lg">
-                <Check className="w-5 h-5 text-green-600 mx-auto mb-1" />
-                <span className="text-green-700 font-medium text-sm">Fully Funded!</span>
-                <p className="text-green-600 text-xs mt-1">Thank you to all contributors</p>
-              </div>
-            )}
-
-            {!isFullyFunded && remainingContributions === 0 && (
-              <div className="text-center p-3 bg-orange-50 rounded-lg">
-                <Users className="w-5 h-5 text-orange-600 mx-auto mb-1" />
-                <span className="text-orange-700 font-medium text-sm">All Spots Taken</span>
-                <p className="text-orange-600 text-xs mt-1">But still accepting funds!</p>
-              </div>
-            )}
+          {/* Info */}
+          <div className="mt-4 text-center">
+            <p className="text-xs text-gray-500">
+              You'll be redirected to Monzo to complete your contribution securely
+            </p>
           </div>
         </div>
       </CardContent>

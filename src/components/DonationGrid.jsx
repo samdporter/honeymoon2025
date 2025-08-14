@@ -1,3 +1,5 @@
+// Replace src/components/DonationGrid.jsx with this version that includes CustomDonationCard:
+
 import React, { useState, useEffect } from "react";
 import { DonationItem } from "@/entities/DonationItem";
 import DonationCard from "./DonationCard.jsx";
@@ -18,7 +20,6 @@ export default function DonationGrid() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [totalContributors, setTotalContributors] = useState(0);
 
   useEffect(() => {
     loadItems();
@@ -27,17 +28,11 @@ export default function DonationGrid() {
   const loadItems = async () => {
     try {
       const data = await DonationItem.list("category");
-      setItems(data);
-      
-      // Calculate total contributors (rough estimate)
-      const contributorCount = data.reduce((total, item) => {
-        const contributions = Math.floor(item.current_amount / item.unit_price);
-        return total + contributions;
-      }, 0);
-      setTotalContributors(contributorCount);
-      
+      console.log("Loaded items:", data);
+      setItems(data || []);
     } catch (error) {
       console.error("Error loading donation items:", error);
+      setItems([]);
     } finally {
       setLoading(false);
     }
@@ -46,18 +41,21 @@ export default function DonationGrid() {
   const handleContribution = async (itemId, amount) => {
     try {
       await DonationItem.addContribution(itemId, amount);
-      // Reload items to show updated progress
       loadItems();
     } catch (error) {
       console.error("Error processing contribution:", error);
     }
   };
 
+  // Filter items safely
   const filteredItems = selectedCategory === "all" 
     ? items 
-    : items.filter(item => item.category === selectedCategory);
+    : items.filter(item => item && item.category === selectedCategory);
 
+  // Group items safely
   const groupedItems = filteredItems.reduce((acc, item) => {
+    if (!item) return acc;
+    
     const category = item.category || "other";
     if (!acc[category]) {
       acc[category] = [];
@@ -67,9 +65,17 @@ export default function DonationGrid() {
   }, {});
 
   const categories = ["all", ...Object.keys(categoryTitles)];
-  const totalRaised = items.reduce((sum, item) => sum + item.current_amount, 0);
-  const totalGoal = items.reduce((sum, item) => sum + item.target_amount, 0);
-  const fullyFundedCount = items.filter(item => DonationItem.isFullyFunded(item)).length;
+  
+  // Safe calculations - exclude custom donations from totals
+  const regularItems = items.filter(item => item && !item.is_custom);
+  const totalRaised = regularItems.reduce((sum, item) => sum + (item.current_amount || 0), 0);
+  const totalGoal = regularItems.reduce((sum, item) => sum + (item.target_amount || 0), 0);
+  const fullyFundedCount = regularItems.filter(item => DonationItem.isFullyFunded(item)).length;
+  const totalContributors = regularItems.reduce((total, item) => {
+    if (!item) return total;
+    const contributions = Math.floor((item.current_amount || 0) / (item.unit_price || 1));
+    return total + contributions;
+  }, 0);
 
   if (loading) {
     return (
@@ -104,7 +110,7 @@ export default function DonationGrid() {
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 mb-1">
                 <Heart className="w-5 h-5 text-red-500" />
-                <span className="text-2xl font-bold text-gray-800">£{totalRaised.toLocaleString()}</span>
+                <span className="text-2xl font-bold text-gray-800">£{totalRaised}</span>
               </div>
               <p className="text-sm text-gray-600">Total Raised</p>
             </div>
@@ -180,17 +186,23 @@ export default function DonationGrid() {
               </span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {categoryItems.map(item => (
-                item.is_custom ? (
-                  <CustomDonationCard key={item.id} />
-                ) : (
+              {categoryItems.map(item => {
+                if (!item) return null;
+                
+                // Render CustomDonationCard for custom items
+                if (item.is_custom) {
+                  return <CustomDonationCard key={item.id} />;
+                }
+                
+                // Render regular DonationCard for normal items
+                return (
                   <DonationCard 
                     key={item.id} 
                     item={item} 
                     onContribution={handleContribution}
                   />
-                )
-              ))}
+                );
+              })}
             </div>
           </div>
         ))
@@ -206,17 +218,23 @@ export default function DonationGrid() {
             <div className="flex-1 h-px bg-gradient-to-r from-green-200 to-transparent"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredItems.map(item => (
-              item.is_custom ? (
-                <CustomDonationCard key={item.id} />
-              ) : (
+            {filteredItems.map(item => {
+              if (!item) return null;
+              
+              // Render CustomDonationCard for custom items
+              if (item.is_custom) {
+                return <CustomDonationCard key={item.id} />;
+              }
+              
+              // Render regular DonationCard for normal items
+              return (
                 <DonationCard 
                   key={item.id} 
                   item={item} 
                   onContribution={handleContribution}
                 />
-              )
-            ))}
+              );
+            })}
           </div>
         </div>
       )}
