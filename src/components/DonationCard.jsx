@@ -13,7 +13,7 @@ export default function DonationCard({ item }) {
 
   return (
     <Card className="group h-full bg-white/80 backdrop-blur-sm border-green-100/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-      <CardContent className="p-0">
+      <CardContent className="p-0 h-full flex flex-col">
         {/* Image */}
         <div className="relative overflow-hidden rounded-t-lg aspect-[4/3]">
           {item.image_url ? (
@@ -44,16 +44,18 @@ export default function DonationCard({ item }) {
         </div>
 
         {/* Content */}
-        <div className="p-6">
-          <h3 className="text-xl font-medium text-gray-800 mb-2 group-hover:text-green-700 transition-colors">
-            {item.title}
-          </h3>
-          
-          {item.description && (
-            <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-              {item.description}
-            </p>
-          )}
+        <div className="p-6 flex-1 flex flex-col">
+          <div className="flex-1">
+            <h3 className="text-xl font-medium text-gray-800 mb-2 group-hover:text-green-700 transition-colors">
+              {item.title}
+            </h3>
+            
+            {item.description && (
+              <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                {item.description}
+              </p>
+            )}
+          </div>
 
           <Button 
             onClick={handleDonate}
