@@ -1,4 +1,3 @@
-import { title } from "process";
 
 // Italian culinary journey items
 const sampleItems = [
@@ -195,7 +194,7 @@ const sampleItems = [
     category: "accommodation",
     image_url: "https://images.unsplash.com/photo-1717170647896-73971d55e34b?w=500&h=400&fit=crop",
     is_purchased: false
-  }
+  },
 
   // Premium Experiences (£180-450)
   {
