@@ -99,7 +99,7 @@ const sampleItems = [
     id: 9,
     title: "Street Food Tour in Naples",
     description: "Pizza fritta, sfogliatelle and espresso in the birthplace of pizza",
-    price: 40,
+    price: 50,
     category: "dining",
     image_url: "https://images.unsplash.com/photo-1599682715474-361182378581?w=500&h=400&fit=crop",
     is_purchased: false
@@ -108,7 +108,7 @@ const sampleItems = [
     id: 10,
     title: "Italian Market Shopping Spree",
     description: "Fresh mozzarella, prosciutto and bread for romantic lunch",
-    price: 45,
+    price: 40,
     category: "dining",
     image_url: "https://images.unsplash.com/photo-1614874044863-95c6cc6b6cf3?w=500&h=400&fit=crop",
     is_purchased: false
