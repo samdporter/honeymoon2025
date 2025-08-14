@@ -8,12 +8,12 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Gift, Heart, Users } from "lucide-react";
 
 const categoryTitles = {
-  donations: "General Contributions",
   drinks: "Aperitivo & Drinks",
   dining: "Culinary Adventures", 
   transport: "La Strada (Getting Around)",
   accommodation: "Romantic Stays",
-  experiences: "Food & Culture Experiences"
+  experiences: "Food & Culture Experiences",
+  donations: "General Contributions",
 };
 
 export default function DonationGrid() {
