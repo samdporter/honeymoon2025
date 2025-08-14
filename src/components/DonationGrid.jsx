@@ -5,11 +5,11 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Gift } from "lucide-react";
 
 const categoryTitles = {
-  accommodation: "Cozy Nights",
-  food_drink: "Tastes & Toasts",
-  activities: "Adventures",
-  transport: "Getting Around",
-  experiences: "Special Moments"
+  drinks: "Aperitivo & Drinks",
+  dining: "Culinary Adventures", 
+  transport: "La Strada",
+  accommodation: "Romantic Stays",
+  experiences: "Food & Culture"
 };
 
 export default function DonationGrid() {
@@ -79,9 +79,9 @@ export default function DonationGrid() {
             <span>Raised: £{totalRaised}</span>
             <span>Goal: £{totalGoal}</span>
           </div>
-          <div className="w-full bg-rose-100 rounded-full h-3">
+          <div className="w-full bg-green-100 rounded-full h-3">
             <div 
-              className="bg-gradient-to-r from-rose-400 to-pink-500 h-3 rounded-full transition-all duration-700"
+              className="bg-gradient-to-r from-green-600 to-red-600 h-3 rounded-full transition-all duration-700"
               style={{ width: `${totalGoal > 0 ? (totalRaised / totalGoal) * 100 : 0}%` }}
             ></div>
           </div>
@@ -99,7 +99,7 @@ export default function DonationGrid() {
             onClick={() => setSelectedCategory(category)}
             className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
               selectedCategory === category
-                ? "bg-gradient-to-r from-rose-400 to-pink-500 text-white shadow-lg"
+                ? "bg-gradient-to-r from-green-600 to-red-600 text-white shadow-lg"
                 : "bg-white/70 text-gray-600 hover:bg-white/90 hover:text-gray-800"
             }`}
           >
@@ -113,11 +113,11 @@ export default function DonationGrid() {
         Object.entries(groupedItems).map(([category, categoryItems]) => (
           <div key={category} className="mb-12">
             <div className="flex items-center gap-3 mb-6">
-              <Gift className="w-6 h-6 text-rose-500" />
+              <Gift className="w-6 h-6 text-green-600" />
               <h3 className="text-2xl font-light text-gray-800">
                 {categoryTitles[category] || category}
               </h3>
-              <div className="flex-1 h-px bg-gradient-to-r from-rose-200 to-transparent"></div>
+              <div className="flex-1 h-px bg-gradient-to-r from-green-200 to-transparent"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {categoryItems.map(item => (

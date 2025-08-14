@@ -12,7 +12,7 @@ export default function DonationCard({ item }) {
   };
 
   return (
-    <Card className="group h-full bg-white/80 backdrop-blur-sm border-rose-100/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+    <Card className="group h-full bg-white/80 backdrop-blur-sm border-green-100/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
       <CardContent className="p-0">
         {/* Image */}
         <div className="relative overflow-hidden rounded-t-lg aspect-[4/3]">
@@ -23,7 +23,7 @@ export default function DonationCard({ item }) {
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-rose-200 to-pink-200 flex items-center justify-center">
+            <div className="w-full h-full bg-gradient-to-br from-green-200 to-yellow-200 flex items-center justify-center">
               <Heart className="w-12 h-12 text-white/70" />
             </div>
           )}
@@ -45,7 +45,7 @@ export default function DonationCard({ item }) {
 
         {/* Content */}
         <div className="p-6">
-          <h3 className="text-xl font-medium text-gray-800 mb-2 group-hover:text-rose-600 transition-colors">
+          <h3 className="text-xl font-medium text-gray-800 mb-2 group-hover:text-green-700 transition-colors">
             {item.title}
           </h3>
           
@@ -61,7 +61,7 @@ export default function DonationCard({ item }) {
             className={`w-full transition-all duration-200 ${
               item.is_purchased 
                 ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                : "bg-gradient-to-r from-rose-400 to-pink-500 hover:from-rose-500 hover:to-pink-600 text-white shadow-lg hover:shadow-xl"
+                : "bg-gradient-to-r from-green-600 to-red-600 hover:from-green-700 hover:to-red-700 text-white shadow-lg hover:shadow-xl"
             }`}
           >
             {item.is_purchased ? (
