@@ -63,7 +63,7 @@ export default function StorySection() {
 
             <p className="text-lg">
               Instead of traditional wedding gifts, help us fund our Italian food adventure! 
-              From a simple gelato (£12) to a Michelin star splurge (£400), every contribution adds flavor to our journey. 
+              From a morning espresso (£10) to a Michelin star splurge (£400), every contribution adds flavor to our journey. 
               Buon viaggio e buon appetito! 🇮🇹
             </p>
           </div>
