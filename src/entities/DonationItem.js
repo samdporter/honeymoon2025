@@ -5,18 +5,18 @@ const sampleItems = [
     id: 1,
     title: "Espresso & Cornetto Breakfast",
     description: "Perfect Italian morning ritual at a local bar in Rome",
-    price: 12,
+    price: 10,
     category: "drinks",
-    image_url: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1610889556528-9a770e32642f?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
     id: 2,
     title: "Aperol Spritz for Two in Venice",
     description: "Classic Italian aperitivo watching gondolas drift by",
-    price: 18,
+    price: 15,
     category: "drinks",
-    image_url: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1627558009791-2280bfc9fe14?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
@@ -25,16 +25,16 @@ const sampleItems = [
     description: "Cold Peroni while watching sunset over the Mediterranean",
     price: 15,
     category: "drinks",
-    image_url: "https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
     id: 4,
     title: "Prosecco Bottle for the Room",
     description: "Celebrate our journey with bubbles from Veneto region",
-    price: 28,
+    price: 20,
     category: "drinks",
-    image_url: "https://images.unsplash.com/photo-1547595628-c61a29f496f0?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1619810856355-c5f4e7f8a90e?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
@@ -43,7 +43,7 @@ const sampleItems = [
     description: "Sweet digestivo after dinner overlooking the sea",
     price: 20,
     category: "drinks",
-    image_url: "https://images.unsplash.com/photo-1544216717-3bbf52512659?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1622575464646-c3c26ee5a3db?w=500&h=400&fit=crop",
     is_purchased: false
   },
 
@@ -63,7 +63,7 @@ const sampleItems = [
     description: "Takeaway carbonara and Frascati wine in Villa Borghese",
     price: 35,
     category: "dining",
-    image_url: "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1615199348139-00bf10980769?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
@@ -72,7 +72,7 @@ const sampleItems = [
     description: "Simple Ligurian lunch with local white wine in Cinque Terre",
     price: 22,
     category: "dining",
-    image_url: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1619450239118-3a0385b360c2?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
@@ -81,7 +81,7 @@ const sampleItems = [
     description: "Pizza fritta, sfogliatelle and espresso in the birthplace of pizza",
     price: 40,
     category: "dining",
-    image_url: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1599682715474-361182378581?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
@@ -90,7 +90,7 @@ const sampleItems = [
     description: "Fresh mozzarella, prosciutto and bread for romantic lunch",
     price: 45,
     category: "dining",
-    image_url: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1614874044863-95c6cc6b6cf3?w=500&h=400&fit=crop",
     is_purchased: false
   },
 
@@ -101,7 +101,7 @@ const sampleItems = [
     description: "Learn from a Neapolitan pizza master in a traditional kitchen",
     price: 65,
     category: "experiences",
-    image_url: "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1532460734809-e7f8475ca917?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
@@ -110,7 +110,7 @@ const sampleItems = [
     description: "Visit three family vineyards in the heart of Tuscany",
     price: 85,
     category: "experiences",
-    image_url: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1636362693426-04a3ff8228c9?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
@@ -119,7 +119,7 @@ const sampleItems = [
     description: "Cruise through Tuscan villages like a true Italian",
     price: 90,
     category: "transport",
-    image_url: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1476419972179-ac981d01257e?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
@@ -128,7 +128,7 @@ const sampleItems = [
     description: "Fresh catch of the day with local wine overlooking the Adriatic",
     price: 75,
     category: "dining",
-    image_url: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1611764060811-c052ae8304ef?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
@@ -137,7 +137,7 @@ const sampleItems = [
     description: "Handmade pappardelle with white truffles in Umbria",
     price: 95,
     category: "dining",
-    image_url: "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1642354609876-5386fea5e7fc?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
@@ -146,7 +146,7 @@ const sampleItems = [
     description: "Learn nonna's secret recipes in her kitchen in Bologna",
     price: 120,
     category: "experiences",
-    image_url: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1569767143908-1342240550ce?w=500&h=400&fit=crop",
     is_purchased: false
   },
 
@@ -157,7 +157,7 @@ const sampleItems = [
     description: "Private tour of Barolo winery with cellar tastings and lunch",
     price: 180,
     category: "experiences",
-    image_url: "https://images.unsplash.com/photo-1474721717769-b011e8f5c0b0?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1597050035361-aeadbc2feb48?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
@@ -166,7 +166,7 @@ const sampleItems = [
     description: "Private gondola ride through Venice canals with champagne",
     price: 220,
     category: "experiences",
-    image_url: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1566984991763-91b985a3f9c2?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
@@ -175,7 +175,7 @@ const sampleItems = [
     description: "One-on-one lesson with Michelin-trained chef in Florence",
     price: 250,
     category: "experiences",
-    image_url: "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1586779245509-5f429311242f?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
@@ -184,7 +184,7 @@ const sampleItems = [
     description: "Romantic stay in converted farmhouse with wine tasting",
     price: 280,
     category: "accommodation",
-    image_url: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1699394631060-a643e09d4780?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
@@ -193,7 +193,7 @@ const sampleItems = [
     description: "Classic Italian road trip from Florence to Rome in style",
     price: 350,
     category: "transport",
-    image_url: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=500&h=400&fit=crop",
+    image_url: "https://images.unsplash.com/photo-1589296261190-873c8e751605?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
@@ -202,7 +202,7 @@ const sampleItems = [
     description: "Unforgettable tasting menu at Enoteca Pinchiorri",
     price: 400,
     category: "dining",
-    image_url: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=400&fit=crop",
+    image_url: "https://plus.unsplash.com/premium_photo-1682097304375-2de9b40b0119?w=500&h=400&fit=crop",
     is_purchased: false
   }
 ];
