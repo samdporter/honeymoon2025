@@ -1,3 +1,5 @@
+import { title } from "process";
+
 // Italian culinary journey items
 const sampleItems = [
   // Budget-Friendly Drinks (£12-35)
@@ -75,6 +77,25 @@ const sampleItems = [
     image_url: "https://images.unsplash.com/photo-1619450239118-3a0385b360c2?w=500&h=400&fit=crop",
     is_purchased: false
   },
+
+  {
+    id: 23,
+    title: "Pasta Primavera",
+    description: "Fresh pasta with seasonal vegetables",
+    price: 30,
+    category: "dining",
+    image_url: "https://images.unsplash.com/photo-1724365858492-743b85c95ac4?w=500&h=400&fit=crop",
+    is_purchased: false
+  },
+  {
+    id: 24,
+    title: "A bottle of Posh Red",
+    description: "A luxurious and bold red wine",
+    price: 35,
+    category: "drinks",
+    image_url: "https://images.unsplash.com/photo-1714377769989-140c9e47fbb9?w=500&h=400&fit=crop",
+    is_purchased: false
+  },
   {
     id: 9,
     title: "Street Food Tour in Naples",
@@ -102,6 +123,14 @@ const sampleItems = [
     price: 65,
     category: "experiences",
     image_url: "https://images.unsplash.com/photo-1532460734809-e7f8475ca917?w=500&h=400&fit=crop",
+    is_purchased: false
+  },
+  { id: 25,
+    title: "Cycling the back roads",
+    description: "Explore the scenic countryside on a guided bike tour",
+    price: 70,
+    category: "experiences",
+    image_url: "https://plus.unsplash.com/premium_photo-1684274186180-026782ae24ab?w=500&h=400&fit=crop",
     is_purchased: false
   },
   {
@@ -158,6 +187,15 @@ const sampleItems = [
     image_url: "https://images.unsplash.com/photo-1569767143908-1342240550ce?w=500&h=400&fit=crop",
     is_purchased: false
   },
+  {
+    id: 22,
+    title: "Flat in central Firenze",
+    description: "Charming apartment in the heart of Florence",
+    price: 150,
+    category: "accommodation",
+    image_url: "https://images.unsplash.com/photo-1717170647896-73971d55e34b?w=500&h=400&fit=crop",
+    is_purchased: false
+  }
 
   // Premium Experiences (£180-450)
   {
