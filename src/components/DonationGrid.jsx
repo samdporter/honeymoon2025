@@ -38,7 +38,9 @@ export default function DonationGrid() {
 
   const groupedItems = filteredItems.reduce((acc, item) => {
     const category = item.category || "other";
-    if (!acc[category]) acc[category] = [];
+    if (!acc[category]) {
+      acc[category] = [];
+    }
     acc[category].push(item);
     return acc;
   }, {});
@@ -67,10 +69,10 @@ export default function DonationGrid() {
     <section className="max-w-6xl mx-auto px-4 py-16">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-light text-gray-800 mb-4 tracking-wide">
-          Help Us Create Magic
+          I can almost taste the adventure
         </h2>
         <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-          Choose something special to gift us for our honeymoon. Each contribution brings us closer to our dream getaway.
+          Your presence at our special day is more than enough, but if you do wish to contribute towards our honeymoon fund, we'd be incredibly grateful. Here are some potential items that will help us create unforgettable memories together.
         </p>
         
         {/* Progress Bar */}
