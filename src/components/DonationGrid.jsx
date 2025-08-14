@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { DonationItem } from "@/entities/DonationItem";
 import DonationCard from "./DonationCard.jsx";
+import CustomDonationCard from "./CustomDonationCard.jsx";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Gift } from "lucide-react";
+import { Gift, Heart, Users } from "lucide-react";
 
 const categoryTitles = {
+  donations: "General Contributions",
   drinks: "Aperitivo & Drinks",
   dining: "Culinary Adventures", 
-  transport: "La Strada",
+  transport: "Getting Around",
   accommodation: "Romantic Stays",
   experiences: "Food & Culture"
 };
@@ -16,6 +18,7 @@ export default function DonationGrid() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [totalContributors, setTotalContributors] = useState(0);
 
   useEffect(() => {
     loadItems();
@@ -25,10 +28,28 @@ export default function DonationGrid() {
     try {
       const data = await DonationItem.list("category");
       setItems(data);
+      
+      // Calculate total contributors (rough estimate)
+      const contributorCount = data.reduce((total, item) => {
+        const contributions = Math.floor(item.current_amount / item.unit_price);
+        return total + contributions;
+      }, 0);
+      setTotalContributors(contributorCount);
+      
     } catch (error) {
       console.error("Error loading donation items:", error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleContribution = async (itemId, amount) => {
+    try {
+      await DonationItem.addContribution(itemId, amount);
+      // Reload items to show updated progress
+      loadItems();
+    } catch (error) {
+      console.error("Error processing contribution:", error);
     }
   };
 
@@ -46,8 +67,9 @@ export default function DonationGrid() {
   }, {});
 
   const categories = ["all", ...Object.keys(categoryTitles)];
-  const totalRaised = items.filter(item => item.is_purchased).reduce((sum, item) => sum + item.price, 0);
-  const totalGoal = items.reduce((sum, item) => sum + item.price, 0);
+  const totalRaised = items.reduce((sum, item) => sum + item.current_amount, 0);
+  const totalGoal = items.reduce((sum, item) => sum + item.target_amount, 0);
+  const fullyFundedCount = items.filter(item => DonationItem.isFullyFunded(item)).length;
 
   if (loading) {
     return (
@@ -58,7 +80,7 @@ export default function DonationGrid() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Array(6).fill(0).map((_, i) => (
-            <Skeleton key={i} className="h-80 rounded-xl" />
+            <Skeleton key={i} className="h-96 rounded-xl" />
           ))}
         </div>
       </section>
@@ -69,26 +91,53 @@ export default function DonationGrid() {
     <section className="max-w-6xl mx-auto px-4 py-16">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-light text-gray-800 mb-4 tracking-wide">
-          I can almost taste the adventure
+          Help us taste our way through Italy
         </h2>
         <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-          Your presence at our special day is more than enough, but if you do wish to contribute towards our honeymoon fund, we'd be incredibly grateful. Here are some potential items that will help us create unforgettable memories together.
+          Your presence at our wedding is the greatest gift, but if you'd like to contribute to our Italian culinary adventure, 
+          every contribution helps us create delicious memories together. Choose any amount that feels right for you!
         </p>
         
-        {/* Progress Bar */}
-        <div className="max-w-md mx-auto mb-8">
-          <div className="flex justify-between text-sm text-gray-600 mb-2">
-            <span>Raised: £{totalRaised}</span>
-            <span>Goal: £{totalGoal}</span>
+        {/* Overall Progress */}
+        <div className="max-w-2xl mx-auto mb-8 p-6 bg-white/70 backdrop-blur-sm rounded-xl border border-green-100/50">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <Heart className="w-5 h-5 text-red-500" />
+                <span className="text-2xl font-bold text-gray-800">£{totalRaised.toLocaleString()}</span>
+              </div>
+              <p className="text-sm text-gray-600">Total Raised</p>
+            </div>
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <Users className="w-5 h-5 text-blue-500" />
+                <span className="text-2xl font-bold text-gray-800">{totalContributors}</span>
+              </div>
+              <p className="text-sm text-gray-600">Contributors</p>
+            </div>
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <Gift className="w-5 h-5 text-green-500" />
+                <span className="text-2xl font-bold text-gray-800">{fullyFundedCount}</span>
+              </div>
+              <p className="text-sm text-gray-600">Fully Funded</p>
+            </div>
           </div>
-          <div className="w-full bg-green-100 rounded-full h-3">
+          
+          <div className="w-full bg-green-100 rounded-full h-4 mb-2">
             <div 
-              className="bg-gradient-to-r from-green-600 to-red-600 h-3 rounded-full transition-all duration-700"
-              style={{ width: `${totalGoal > 0 ? (totalRaised / totalGoal) * 100 : 0}%` }}
-            ></div>
+              className="bg-gradient-to-r from-green-600 via-yellow-500 to-red-600 h-4 rounded-full transition-all duration-700 flex items-center justify-end pr-2"
+              style={{ width: `${totalGoal > 0 ? Math.min((totalRaised / totalGoal) * 100, 100) : 0}%` }}
+            >
+              {totalRaised > 0 && (
+                <span className="text-white text-xs font-medium">
+                  {Math.round(totalGoal > 0 ? (totalRaised / totalGoal) * 100 : 0)}%
+                </span>
+              )}
+            </div>
           </div>
-          <p className="text-sm text-gray-500 mt-2">
-            {Math.round(totalGoal > 0 ? (totalRaised / totalGoal) * 100 : 0)}% funded
+          <p className="text-sm text-gray-600">
+            Goal: £{totalGoal.toLocaleString()} for our complete Italian adventure
           </p>
         </div>
       </div>
@@ -102,10 +151,10 @@ export default function DonationGrid() {
             className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
               selectedCategory === category
                 ? "bg-gradient-to-r from-green-600 to-red-600 text-white shadow-lg"
-                : "bg-white/70 text-gray-600 hover:bg-white/90 hover:text-gray-800"
+                : "bg-white/70 text-gray-600 hover:bg-white/90 hover:text-gray-800 border border-green-100"
             }`}
           >
-            {category === "all" ? "All Items" : categoryTitles[category]}
+            {category === "all" ? "All Options" : categoryTitles[category]}
           </button>
         ))}
       </div>
@@ -115,33 +164,83 @@ export default function DonationGrid() {
         Object.entries(groupedItems).map(([category, categoryItems]) => (
           <div key={category} className="mb-12">
             <div className="flex items-center gap-3 mb-6">
-              <Gift className="w-6 h-6 text-green-600" />
+              <div className="w-8 h-8 bg-gradient-to-r from-green-600 to-red-600 rounded-full flex items-center justify-center">
+                {category === 'donations' ? (
+                  <Heart className="w-4 h-4 text-white fill-current" />
+                ) : (
+                  <Gift className="w-4 h-4 text-white" />
+                )}
+              </div>
               <h3 className="text-2xl font-light text-gray-800">
                 {categoryTitles[category] || category}
               </h3>
               <div className="flex-1 h-px bg-gradient-to-r from-green-200 to-transparent"></div>
+              <span className="text-sm text-gray-500 bg-white/60 px-3 py-1 rounded-full">
+                {categoryItems.length} {categoryItems.length === 1 ? 'option' : 'options'}
+              </span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {categoryItems.map(item => (
-                <DonationCard key={item.id} item={item} />
+                item.is_custom ? (
+                  <CustomDonationCard key={item.id} />
+                ) : (
+                  <DonationCard 
+                    key={item.id} 
+                    item={item} 
+                    onContribution={handleContribution}
+                  />
+                )
               ))}
             </div>
           </div>
         ))
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map(item => (
-            <DonationCard key={item.id} item={item} />
-          ))}
+        <div>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-8 h-8 bg-gradient-to-r from-green-600 to-red-600 rounded-full flex items-center justify-center">
+              <Gift className="w-4 h-4 text-white" />
+            </div>
+            <h3 className="text-2xl font-light text-gray-800">
+              {categoryTitles[selectedCategory] || selectedCategory}
+            </h3>
+            <div className="flex-1 h-px bg-gradient-to-r from-green-200 to-transparent"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredItems.map(item => (
+              item.is_custom ? (
+                <CustomDonationCard key={item.id} />
+              ) : (
+                <DonationCard 
+                  key={item.id} 
+                  item={item} 
+                  onContribution={handleContribution}
+                />
+              )
+            ))}
+          </div>
         </div>
       )}
 
       {filteredItems.length === 0 && !loading && (
         <div className="text-center py-12">
           <Gift className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <p className="text-gray-500 text-lg">No items found in this category</p>
+          <p className="text-gray-500 text-lg">No options found in this category</p>
         </div>
       )}
+
+      {/* Thank You Message */}
+      <div className="mt-16 text-center">
+        <div className="max-w-3xl mx-auto p-8 bg-gradient-to-r from-green-50 to-red-50 rounded-2xl border border-green-100">
+          <Heart className="w-12 h-12 text-red-500 mx-auto mb-4 fill-current" />
+          <h3 className="text-2xl font-light text-gray-800 mb-4">Grazie Mille! 🇮🇹</h3>
+          <p className="text-gray-600 leading-relaxed">
+            Every contribution, no matter the size, helps us create unforgettable memories in Italy. 
+            From a morning espresso to a michelin-starred dinner, each moment will be made sweeter knowing 
+            our friends and family helped make it possible. We can't wait to share our adventure with you 
+            when we return! <span className="font-medium">With love, Kate & Sam</span>
+          </p>
+        </div>
+      </div>
     </section>
   );
 }
