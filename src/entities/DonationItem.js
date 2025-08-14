@@ -141,6 +141,15 @@ const sampleItems = [
     is_purchased: false
   },
   {
+    id: 21,
+    title: "Cosy Cabin Getaway",
+    description: "A romantic cabin retreat in the apennine woods",
+    price: 95,
+    category: "accommodation",
+    image_url: "https://images.unsplash.com/photo-1720449041332-b572acf1bf1e??w=500&h=400&fit=crop",
+    is_purchased: false
+  },
+  {
     id: 16,
     title: "Cooking Class with Local Family",
     description: "Learn nonna's secret recipes in her kitchen in Bologna",
