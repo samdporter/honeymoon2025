@@ -164,7 +164,7 @@ const sampleItems = [
     id: 15,
     title: "Truffle Pasta at Local Trattoria",
     description: "Handmade pappardelle with white truffles in Umbria",
-    price: 95,
+    price: 80,
     category: "dining",
     image_url: "https://images.unsplash.com/photo-1642354609876-5386fea5e7fc?w=500&h=400&fit=crop",
     is_purchased: false
@@ -173,7 +173,7 @@ const sampleItems = [
     id: 21,
     title: "Cosy Cabin Getaway",
     description: "A romantic cabin retreat in the apennine woods",
-    price: 95,
+    price: 100,
     category: "accommodation",
     image_url: "https://images.unsplash.com/photo-1720449041332-b572acf1bf1e??w=500&h=400&fit=crop",
     is_purchased: false
