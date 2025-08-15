@@ -26,7 +26,7 @@ const sampleItems = [
     target_amount: 200, // £10 x 20 people
     unit_price: 10,
     current_amount: 0, // 40, // 4 people have contributed
-    max_contributions: 20,
+    max_contributions: null,
     category: "donations",
     image_url: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=500&h=400&fit=crop"
   },
@@ -37,7 +37,7 @@ const sampleItems = [
     target_amount: 200, // £20 x 10 people
     unit_price: 20,
     current_amount: 0, // 60, // 3 people have contributed
-    max_contributions: 10,
+    max_contributions: null,
     category: "donations",
     image_url: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=500&h=400&fit=crop"
   },
@@ -48,7 +48,7 @@ const sampleItems = [
     target_amount: 200, // £50 x 4 people
     unit_price: 50,
     current_amount: 0, // 100, // 2 people have contributed
-    max_contributions: 4,
+    max_contributions: null,
     category: "donations",
     image_url: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=500&h=400&fit=crop"
   },
@@ -59,7 +59,7 @@ const sampleItems = [
     target_amount: 300, // £100 x 3 people
     unit_price: 100,
     current_amount: 0, // 100, // 1 person has contributed
-    max_contributions: 3,
+    max_contributions: null,
     category: "donations",
     image_url: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=500&h=400&fit=crop"
   },
@@ -70,7 +70,7 @@ const sampleItems = [
     target_amount: 600, // £200 x 3 people
     unit_price: 200,
     current_amount: 0, // 100, // 1 person has contributed
-    max_contributions: 3,
+    max_contributions: null,
     category: "donations",
     image_url: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=500&h=400&fit=crop"
   },
@@ -150,7 +150,7 @@ const sampleItems = [
     target_amount: 50, // £5 x 10 gelatos
     unit_price: 5,
     current_amount: 0, // 25, // 5 people have contributed
-    max_contributions: 10,
+    max_contributions: 4,
     category: "dining",
     image_url: "https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?w=500&h=400&fit=crop"
   },
@@ -273,7 +273,7 @@ const sampleItems = [
     target_amount: 100, // £50 x 2 journeys
     unit_price: 50,
     current_amount: 0, // 50,
-    max_contributions: 2,
+    max_contributions: 4,
     category: "transport",
     image_url: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=500&h=400&fit=crop"
   },

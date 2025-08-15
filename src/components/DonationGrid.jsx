@@ -65,17 +65,6 @@ export default function DonationGrid() {
   }, {});
 
   const categories = ["all", ...Object.keys(categoryTitles)];
-  
-  // Safe calculations - exclude custom donations from totals
-  const regularItems = items.filter(item => item && !item.is_custom);
-  const totalRaised = DonationItem.getTotalRaised(items);
-  const totalGoal = DonationItem.getTotalTarget(); // Hardcoded £2,000
-  const fullyFundedCount = regularItems.filter(item => DonationItem.isFullyFunded(item)).length;
-  const totalContributors = regularItems.reduce((total, item) => {
-    if (!item) return total;
-    const contributions = Math.floor((item.current_amount || 0) / (item.unit_price || 1));
-    return total + contributions;
-  }, 0);
 
   if (loading) {
     return (
@@ -101,51 +90,8 @@ export default function DonationGrid() {
         </h2>
         <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
           Your presence at our wedding is the greatest gift, but if you'd like to contribute to our Italian culinary adventure, 
-          we'd be incredibly grateful. We're aiming for £2,000 to help us create delicious memories together!
+          we'd be incredibly grateful.
         </p>
-        
-        {/* Overall Progress */}
-        <div className="max-w-2xl mx-auto mb-8 p-6 bg-white/70 backdrop-blur-sm rounded-xl border border-green-100/50">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-2 mb-1">
-                <Heart className="w-5 h-5 text-red-500" />
-                <span className="text-2xl font-bold text-gray-800">£{totalRaised}</span>
-              </div>
-              <p className="text-sm text-gray-600">Total Raised</p>
-            </div>
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-2 mb-1">
-                <Users className="w-5 h-5 text-blue-500" />
-                <span className="text-2xl font-bold text-gray-800">{totalContributors}</span>
-              </div>
-              <p className="text-sm text-gray-600">Contributors</p>
-            </div>
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-2 mb-1">
-                <Gift className="w-5 h-5 text-green-500" />
-                <span className="text-2xl font-bold text-gray-800">{fullyFundedCount}</span>
-              </div>
-              <p className="text-sm text-gray-600">Fully Funded</p>
-            </div>
-          </div>
-          
-          <div className="w-full bg-green-100 rounded-full h-4 mb-2">
-            <div 
-              className="bg-gradient-to-r from-green-600 via-yellow-500 to-red-600 h-4 rounded-full transition-all duration-700 flex items-center justify-end pr-2"
-              style={{ width: `${totalGoal > 0 ? Math.min((totalRaised / totalGoal) * 100, 100) : 0}%` }}
-            >
-              {totalRaised > 0 && (
-                <span className="text-white text-xs font-medium">
-                  {Math.round(totalGoal > 0 ? (totalRaised / totalGoal) * 100 : 0)}%
-                </span>
-              )}
-            </div>
-          </div>
-          <p className="text-sm text-gray-600">
-            Target: £{totalGoal.toLocaleString()} for our Italian honeymoon adventure
-          </p>
-        </div>
       </div>
 
       {/* Category Filter */}
