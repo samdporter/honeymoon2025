@@ -52,7 +52,7 @@ export default function DonationGrid() {
     ? items 
     : items.filter(item => item && item.category === selectedCategory);
 
-  // Group items safely
+  // Group items safely and sort to put custom donations at the bottom
   const groupedItems = filteredItems.reduce((acc, item) => {
     if (!item) return acc;
     
@@ -63,6 +63,16 @@ export default function DonationGrid() {
     acc[category].push(item);
     return acc;
   }, {});
+
+  // Sort each category to put custom donations at the bottom
+  Object.keys(groupedItems).forEach(category => {
+    groupedItems[category].sort((a, b) => {
+      // Custom items (is_custom: true) go to the bottom
+      if (a.is_custom && !b.is_custom) return 1;
+      if (!a.is_custom && b.is_custom) return -1;
+      return 0; // Keep original order for items of the same type
+    });
+  });
 
   const categories = ["all", ...Object.keys(categoryTitles)];
 
@@ -113,7 +123,14 @@ export default function DonationGrid() {
 
       {/* Items Grid */}
       {selectedCategory === "all" ? (
-        Object.entries(groupedItems).map(([category, categoryItems]) => (
+        Object.entries(groupedItems)
+          .sort(([categoryA], [categoryB]) => {
+            // Put "donations" (General Contributions) category at the bottom
+            if (categoryA === 'donations' && categoryB !== 'donations') return 1;
+            if (categoryA !== 'donations' && categoryB === 'donations') return -1;
+            return 0; // Keep original order for other categories
+          })
+          .map(([category, categoryItems]) => (
           <div key={category} className="mb-12">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-8 bg-gradient-to-r from-green-600 to-red-600 rounded-full flex items-center justify-center">
