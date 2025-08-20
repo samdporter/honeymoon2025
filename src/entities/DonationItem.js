@@ -292,11 +292,11 @@ const sampleItems = [
   // Accommodation
   {
     id: 20,
-    title: "Cozy Mountain Cabin",
+    title: "Cosy Mountain Cabin",
     description: "Romantic cabin retreat in the Apennine woods",
     target_amount: 200, // £100 x 2 nights
     unit_price: 100,
-    current_amount: 0, // 100,
+    current_amount: 100, // 100,
     max_contributions: 2,
     category: "accommodation",
     image_url: "https://images.unsplash.com/photo-1720449041332-b572acf1bf1e?w=500&h=400&fit=crop"
