@@ -134,8 +134,8 @@ const sampleItems = [
     id: 6,
     title: "Premium Italian Wine",
     description: "Something a bit fancier than your average drop",
-    target_amount: 105, // £35 x 3 bottles
-    unit_price: 35,
+    target_amount: 150, // £50 x 3 bottles
+    unit_price: 50,
     current_amount: 0, // 35,
     max_contributions: 3,
     category: "drinks",
@@ -180,10 +180,10 @@ const sampleItems = [
     id: 10,
     title: "Pasta Primavera at Trattorias",
     description: "Fresh pasta with seasonal vegetables",
-    target_amount: 90, // £30 x 3 meals
+    target_amount: 60, // £30 x 2 meals
     unit_price: 30,
     current_amount: 0, // 30,
-    max_contributions: 3,
+    max_contributions: 2,
     category: "dining",
     image_url: "https://images.unsplash.com/photo-1724365858492-743b85c95ac4?w=500&h=400&fit=crop"
   },
@@ -224,8 +224,8 @@ const sampleItems = [
     id: 14,
     title: "Truffle Pasta Experience",
     description: "Handmade pappardelle with white truffles in Umbria",
-    target_amount: 160, // £80 x 2 meals
-    unit_price: 80,
+    target_amount: 150, // £75 x 2 meals
+    unit_price: 75,
     current_amount: 0, // 0,
     max_contributions: 2,
     category: "dining",
@@ -248,8 +248,8 @@ const sampleItems = [
     id: 16,
     title: "Cycling Tuscan Countryside",
     description: "Explore scenic countryside on guided bike tours",
-    target_amount: 140, // £70 x 2 people
-    unit_price: 70,
+    target_amount: 150, // £75 x 2 people
+    unit_price: 75,
     current_amount: 0, // 0,
     max_contributions: 2,
     category: "transport",
@@ -259,9 +259,9 @@ const sampleItems = [
     id: 17,
     title: "Vespa Day Rentals",
     description: "Cruise through Tuscan villages like true Italians",
-    target_amount: 180, // £90 x 2 days
-    unit_price: 90,
-    current_amount: 0, // 90,
+    target_amount: 200, // £100 x 2 days
+    unit_price: 100,
+    current_amount: 0, // 100,
     max_contributions: 2,
     category: "transport",
     image_url: "https://images.unsplash.com/photo-1476419972179-ac981d01257e?w=500&h=400&fit=crop"
@@ -294,10 +294,10 @@ const sampleItems = [
     id: 20,
     title: "Cosy Mountain Cabin",
     description: "Romantic cabin retreat in the Apennine woods",
-    target_amount: 200, // £100 x 2 nights
+    target_amount: 400, // £100 x 2 nights x 2 people
     unit_price: 100,
     current_amount: 200, // 100,
-    max_contributions: 2,
+    max_contributions: 4,
     category: "accommodation",
     image_url: "https://images.unsplash.com/photo-1720449041332-b572acf1bf1e?w=500&h=400&fit=crop"
   },
@@ -316,8 +316,8 @@ const sampleItems = [
     id: 22,
     title: "Tuscan Villa Night",
     description: "Romantic stay in converted farmhouse with wine tasting",
-    target_amount: 280, // £140 x 2 nights
-    unit_price: 140,
+    target_amount: 200, // £100 x 2 nights
+    unit_price: 100,
     current_amount: 0, // 0,
     max_contributions: 2,
     category: "accommodation",
