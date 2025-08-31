@@ -1,4 +1,4 @@
-// Replace src/components/DonationCard.jsx with this safer version:
+// Replace src/components/DonationCard.jsx with this fixed version:
 
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -21,14 +21,16 @@ export default function DonationCard({ item, onContribution }) {
   const description = item.description || "";
   const unitPrice = item.unit_price || 0;
   const currentAmount = item.current_amount || 0;
-  const targetAmount = item.target_amount || 0;
+  const targetAmount = item.target_amount || null; // Keep as null if not set
   const maxContributions = item.max_contributions || null;
   const imageUrl = item.image_url || null;
   
-  const progress = targetAmount > 0 ? Math.min((currentAmount / targetAmount) * 100, 100) : 0;
+  // Fixed logic: Only calculate progress and "fully funded" for items WITH target amounts
+  const hasTarget = targetAmount !== null && targetAmount > 0;
+  const progress = hasTarget ? Math.min((currentAmount / targetAmount) * 100, 100) : 0;
   const contributionsMade = unitPrice > 0 ? Math.floor(currentAmount / unitPrice) : 0;
   const remainingContributions = maxContributions ? Math.max(0, maxContributions - contributionsMade) : null;
-  const isFullyFunded = currentAmount >= targetAmount;
+  const isFullyFunded = hasTarget && (currentAmount >= targetAmount);
 
   const handleDonate = (amount = unitPrice) => {
     if (amount <= 0) {
@@ -107,8 +109,8 @@ export default function DonationCard({ item, onContribution }) {
               </p>
             )}
 
-            {/* Progress Section */}
-            {targetAmount > 0 && (
+            {/* Progress Section - Only show for items WITH targets */}
+            {hasTarget && (
               <div className="mb-4 space-y-2">
                 <div className="flex justify-between text-sm text-gray-600">
                   <span>Progress</span>
@@ -125,6 +127,16 @@ export default function DonationCard({ item, onContribution }) {
                   {remainingContributions !== null && (
                     <span>{remainingContributions} spots left</span>
                   )}
+                </div>
+              </div>
+            )}
+
+            {/* For general donations without targets, show current amount */}
+            {!hasTarget && currentAmount > 0 && (
+              <div className="mb-4 p-3 bg-green-50 rounded-lg">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">Total contributed:</span>
+                  <span className="text-lg font-semibold text-green-700">£{currentAmount}</span>
                 </div>
               </div>
             )}
