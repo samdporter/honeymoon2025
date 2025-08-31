@@ -215,7 +215,7 @@ const sampleItems = [
     description: "Fresh catch with local wine overlooking the Adriatic",
     target_amount: 150, // £75 x 2 lunches
     unit_price: 75,
-    current_amount: 0, // 0,
+    current_amount: 75, // 0,
     max_contributions: 2,
     category: "dining",
     image_url: "https://images.unsplash.com/photo-1611764060811-c052ae8304ef?w=500&h=400&fit=crop"
