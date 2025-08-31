@@ -23,7 +23,7 @@ const sampleItems = [
     id: "donation-10",
     title: "£10 Contribution",
     description: "Every little helps towards our Italian adventure",
-    target_amount: 200, // £10 x 20 people
+    target_amount: null, // £10 x 20 people
     unit_price: 10,
     current_amount: 0, // 40, // 4 people have contributed
     max_contributions: null,
@@ -34,7 +34,7 @@ const sampleItems = [
     id: "donation-20",
     title: "£20 Contribution", 
     description: "Help us savor the flavors of Italy",
-    target_amount: 200, // £20 x 10 people
+    target_amount: null, // £20 x 10 people
     unit_price: 20,
     current_amount: 0, // 60, // 3 people have contributed
     max_contributions: null,
@@ -45,9 +45,9 @@ const sampleItems = [
     id: "donation-50",
     title: "£50 Contribution",
     description: "A generous boost to our culinary journey",
-    target_amount: 200, // £50 x 4 people
+    target_amount: null, // £50 x 4 people
     unit_price: 50,
-    current_amount: 0, // 100, // 2 people have contributed
+    current_amount: 50, // 100, // 2 people have contributed
     max_contributions: null,
     category: "donations",
     image_url: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=500&h=400&fit=crop"
@@ -56,9 +56,9 @@ const sampleItems = [
     id: "donation-100",
     title: "£100 Contribution",
     description: "A wonderful contribution to our Italian memories",
-    target_amount: 300, // £100 x 3 people
+    target_amount: null, // £100 x 3 people
     unit_price: 100,
-    current_amount: 0, // 100, // 1 person has contributed
+    current_amount: 100, // 100, // 1 person has contributed
     max_contributions: null,
     category: "donations",
     image_url: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=500&h=400&fit=crop"
@@ -67,7 +67,7 @@ const sampleItems = [
     id: "donation-200",
     title: "£200 Contribution",
     description: "An amazingly wonderful contribution to our Italian memories",
-    target_amount: 600, // £200 x 3 people
+    target_amount: null, // £200 x 3 people
     unit_price: 200,
     current_amount: 0, // 100, // 1 person has contributed
     max_contributions: null,
