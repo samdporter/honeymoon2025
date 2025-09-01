@@ -182,7 +182,7 @@ const sampleItems = [
     description: "Fresh pasta with seasonal vegetables",
     target_amount: 60, // £30 x 2 meals
     unit_price: 30,
-    current_amount: 0, // 30,
+    current_amount: 30, // 30,
     max_contributions: 2,
     category: "dining",
     image_url: "https://images.unsplash.com/photo-1724365858492-743b85c95ac4?w=500&h=400&fit=crop"
@@ -296,7 +296,7 @@ const sampleItems = [
     description: "Romantic cabin retreat in the Apennine woods",
     target_amount: 400, // £100 x 2 nights x 2 people
     unit_price: 100,
-    current_amount: 200, // 100,
+    current_amount: 300, // 100,
     max_contributions: 4,
     category: "accommodation",
     image_url: "https://images.unsplash.com/photo-1720449041332-b572acf1bf1e?w=500&h=400&fit=crop"
