@@ -160,7 +160,7 @@ const sampleItems = [
     description: "Takeaway pasta and local wine in beautiful parks",
     target_amount: 105, // £35 x 3 picnics
     unit_price: 35,
-    current_amount: 0, // 70,
+    current_amount: 35, // 70,
     max_contributions: 3,
     category: "dining",
     image_url: "https://images.unsplash.com/photo-1615199348139-00bf10980769?w=500&h=400&fit=crop"
@@ -296,7 +296,7 @@ const sampleItems = [
     description: "Romantic cabin retreat in the Apennine woods",
     target_amount: 400, // £100 x 2 nights x 2 people
     unit_price: 100,
-    current_amount: 300, // 100,
+    current_amount: 400, // 100,
     max_contributions: 4,
     category: "accommodation",
     image_url: "https://images.unsplash.com/photo-1720449041332-b572acf1bf1e?w=500&h=400&fit=crop"
