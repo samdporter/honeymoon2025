@@ -193,7 +193,7 @@ const sampleItems = [
     description: "Pizza fritta, sfogliatelle and espresso in pizza's birthplace",
     target_amount: 100, // £50 x 2 people
     unit_price: 50,
-    current_amount: 0, // 50,
+    current_amount: 100, // 50,
     max_contributions: 2,
     category: "dining",
     image_url: "https://images.unsplash.com/photo-1599682715474-361182378581?w=500&h=400&fit=crop"
@@ -250,7 +250,7 @@ const sampleItems = [
     description: "Explore scenic countryside on guided bike tours",
     target_amount: 150, // £75 x 2 people
     unit_price: 75,
-    current_amount: 0, // 0,
+    current_amount: 75, // 0,
     max_contributions: 2,
     category: "transport",
     image_url: "https://plus.unsplash.com/premium_photo-1684274186180-026782ae24ab?w=500&h=400&fit=crop"
