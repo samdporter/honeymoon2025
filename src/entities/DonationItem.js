@@ -58,7 +58,7 @@ const sampleItems = [
     description: "A wonderful contribution to our Italian memories",
     target_amount: null, // £100 x 3 people
     unit_price: 100,
-    current_amount: 100, // 100, // 1 person has contributed
+    current_amount: 200, // 100, // 1 person has contributed
     max_contributions: null,
     category: "donations",
     image_url: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=500&h=400&fit=crop"
@@ -318,7 +318,7 @@ const sampleItems = [
     description: "Romantic stay in converted farmhouse with wine tasting",
     target_amount: 200, // £100 x 2 nights
     unit_price: 100,
-    current_amount: 0, // 0,
+    current_amount: 100, // 0,
     max_contributions: 2,
     category: "accommodation",
     image_url: "https://images.unsplash.com/photo-1699394631060-a643e09d4780?w=500&h=400&fit=crop"
@@ -375,7 +375,7 @@ const sampleItems = [
     description: "Private gondola ride through Venice canals",
     target_amount: 150, // £75 x 2 people
     unit_price: 75,
-    current_amount: 0, // 0,
+    current_amount: 75, // 0,
     max_contributions: 2,
     category: "experiences",
     image_url: "https://images.unsplash.com/photo-1566984991763-91b985a3f9c2?w=500&h=400&fit=crop"
