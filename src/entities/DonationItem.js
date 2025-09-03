@@ -11,7 +11,7 @@ const sampleItems = [
     description: "Perfect if you'd like to give a specific amount towards our Italian adventure",
     target_amount: null,
     unit_price: null,
-    current_amount: 0, // 0,
+    current_amount: 450, // 0,
     max_contributions: null,
     category: "donations",
     is_custom: true,
@@ -318,7 +318,7 @@ const sampleItems = [
     description: "Romantic stay in converted farmhouse with wine tasting",
     target_amount: 200, // £100 x 2 nights
     unit_price: 100,
-    current_amount: 100, // 0,
+    current_amount: 200, // 0,
     max_contributions: 2,
     category: "accommodation",
     image_url: "https://images.unsplash.com/photo-1699394631060-a643e09d4780?w=500&h=400&fit=crop"
