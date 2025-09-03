@@ -11,7 +11,7 @@ const sampleItems = [
     description: "Perfect if you'd like to give a specific amount towards our Italian adventure",
     target_amount: null,
     unit_price: null,
-    current_amount: 450, // 0,
+    current_amount: 550, // 0,
     max_contributions: null,
     category: "donations",
     is_custom: true,
