@@ -316,10 +316,10 @@ const sampleItems = [
     id: 22,
     title: "Tuscan Villa Night",
     description: "Romantic stay in converted farmhouse with wine tasting",
-    target_amount: 200, // £100 x 2 nights
+    target_amount: 400, // £100 x 2 nights
     unit_price: 100,
     current_amount: 200, // 0,
-    max_contributions: 2,
+    max_contributions: 4,
     category: "accommodation",
     image_url: "https://images.unsplash.com/photo-1699394631060-a643e09d4780?w=500&h=400&fit=crop"
   },
