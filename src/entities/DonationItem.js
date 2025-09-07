@@ -180,7 +180,7 @@ const sampleItems = [
     id: 10,
     title: "Pasta Primavera at Trattorias",
     description: "Fresh pasta with seasonal vegetables",
-    target_amount: 60, // £30 x 2 meals
+    target_amount: 120, // £30 x 2 meals
     unit_price: 30,
     current_amount: 90, // 30,
     max_contributions: 4,
@@ -213,7 +213,7 @@ const sampleItems = [
     id: 13,
     title: "Seafood Lunches by the Sea",
     description: "Fresh catch with local wine overlooking the Adriatic",
-    target_amount: 150, // £75 x 2 lunches
+    target_amount: 300, // £75 x 2 lunches
     unit_price: 75,
     current_amount: 225, // 0,
     max_contributions: 4,
