@@ -92,7 +92,7 @@ const sampleItems = [
     description: "Classic Italian aperitivo for sunset moments",
     target_amount: 75, // £15 x 5 sessions
     unit_price: 15,
-    current_amount: 0, // 45, // 3 people have contributed
+    current_amount: 15, // 45, // 3 people have contributed
     max_contributions: 5,
     category: "drinks",
     image_url: "https://images.unsplash.com/photo-1627558009791-2280bfc9fe14?w=500&h=400&fit=crop"
@@ -103,7 +103,7 @@ const sampleItems = [
     description: "Cold Peroni while watching sunset over the Mediterranean",
     target_amount: 60, // £15 x 4 sessions
     unit_price: 15,
-    current_amount: 0, // 15,
+    current_amount: 30, // 15,
     max_contributions: 4,
     category: "drinks",
     image_url: "https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=500&h=400&fit=crop"
@@ -125,7 +125,7 @@ const sampleItems = [
     description: "Sweet digestivo after dinner overlooking the sea",
     target_amount: 60, // £20 x 3 sessions
     unit_price: 20,
-    current_amount: 0, // 20,
+    current_amount: 20, // 20,
     max_contributions: 3,
     category: "drinks",
     image_url: "https://images.unsplash.com/photo-1622575464646-c3c26ee5a3db?w=500&h=400&fit=crop"
@@ -136,7 +136,7 @@ const sampleItems = [
     description: "Something a bit fancier than your average drop",
     target_amount: 150, // £50 x 3 bottles
     unit_price: 50,
-    current_amount: 0, // 35,
+    current_amount: 50, // 35,
     max_contributions: 3,
     category: "drinks",
     image_url: "https://images.unsplash.com/photo-1714377769989-140c9e47fbb9?w=500&h=400&fit=crop"
@@ -182,8 +182,8 @@ const sampleItems = [
     description: "Fresh pasta with seasonal vegetables",
     target_amount: 60, // £30 x 2 meals
     unit_price: 30,
-    current_amount: 30, // 30,
-    max_contributions: 2,
+    current_amount: 90, // 30,
+    max_contributions: 4,
     category: "dining",
     image_url: "https://images.unsplash.com/photo-1724365858492-743b85c95ac4?w=500&h=400&fit=crop"
   },
@@ -215,8 +215,8 @@ const sampleItems = [
     description: "Fresh catch with local wine overlooking the Adriatic",
     target_amount: 150, // £75 x 2 lunches
     unit_price: 75,
-    current_amount: 75, // 0,
-    max_contributions: 2,
+    current_amount: 225, // 0,
+    max_contributions: 4,
     category: "dining",
     image_url: "https://images.unsplash.com/photo-1611764060811-c052ae8304ef?w=500&h=400&fit=crop"
   },
@@ -237,7 +237,7 @@ const sampleItems = [
     description: "One memorable fine dining experience",
     target_amount: 200, // £100 x 2 people
     unit_price: 100,
-    current_amount: 0, // 0,
+    current_amount: 200, // 0,
     max_contributions: 2,
     category: "dining",
     image_url: "https://plus.unsplash.com/premium_photo-1682097304375-2de9b40b0119?w=500&h=400&fit=crop"
@@ -283,7 +283,7 @@ const sampleItems = [
     description: "Classic Italian road trip style",
     target_amount: 150, // £50 x 3 days
     unit_price: 50,
-    current_amount: 0, // 50,
+    current_amount: 50, // 50,
     max_contributions: 3,
     category: "transport",
     image_url: "https://images.unsplash.com/photo-1589296261190-873c8e751605?w=500&h=400&fit=crop"
@@ -318,7 +318,7 @@ const sampleItems = [
     description: "Romantic stay in converted farmhouse with wine tasting",
     target_amount: 400, // £100 x 2 nights
     unit_price: 100,
-    current_amount: 200, // 0,
+    current_amount: 400, // 0,
     max_contributions: 4,
     category: "accommodation",
     image_url: "https://images.unsplash.com/photo-1699394631060-a643e09d4780?w=500&h=400&fit=crop"
@@ -342,7 +342,7 @@ const sampleItems = [
     description: "Visit family vineyards in the heart of Tuscany",
     target_amount: 170, // £85 x 2 people
     unit_price: 85,
-    current_amount: 0, // 0,
+    current_amount: 85, // 0,
     max_contributions: 2,
     category: "experiences",
     image_url: "https://images.unsplash.com/photo-1636362693426-04a3ff8228c9?w=500&h=400&fit=crop"
@@ -353,7 +353,7 @@ const sampleItems = [
     description: "Learn nonna's secret recipes in Bologna",
     target_amount: 120, // £60 x 2 people
     unit_price: 60,
-    current_amount: 0, // 0,
+    current_amount: 60, // 0,
     max_contributions: 2,
     category: "experiences",
     image_url: "https://images.unsplash.com/photo-1569767143908-1342240550ce?w=500&h=400&fit=crop"
@@ -408,7 +408,7 @@ const sampleItems = [
     description: "Explore hidden coves and enjoy a seafood lunch",
     target_amount: 200, // £100 x 2 people
     unit_price: 100,
-    current_amount: 0, // 0,
+    current_amount: 100, // 0,
     max_contributions: 2,
     category: "transport",
     image_url: "https://images.unsplash.com/photo-1559036212-2fd4158b2571?w=500&h=400&fit=crop"
