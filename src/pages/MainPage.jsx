@@ -54,7 +54,7 @@ export default function MainPage() {
               <Link to="/honeymoon-fund">
                 <Card className="group cursor-pointer bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
                   <CardContent className="p-8 text-center">
-                    <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 mt-2 bg-gradient-to-r from-green-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <Gift className="w-6 h-6 text-white" />
                     </div>
                     <h3 className="text-xl font-medium text-white mb-3">
@@ -75,7 +75,7 @@ export default function MainPage() {
               <Link to="/photos">
                 <Card className="group cursor-pointer bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
                   <CardContent className="p-8 text-center">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 mt-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <Camera className="w-6 h-6 text-white" />
                     </div>
                     <h3 className="text-xl font-medium text-white mb-3">

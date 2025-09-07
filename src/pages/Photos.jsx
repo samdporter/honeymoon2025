@@ -63,7 +63,7 @@ export default function Photos() {
           {/* Main Upload Card */}
           <Card className="bg-white/80 backdrop-blur-sm border-blue-100/50 shadow-xl">
             <CardContent className="p-8 text-center">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 mt-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Upload className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-xl font-medium text-gray-800 mb-3">
@@ -86,7 +86,7 @@ export default function Photos() {
           {/* Instructions Card */}
           <Card className="bg-white/80 backdrop-blur-sm border-blue-100/50 shadow-xl">
             <CardContent className="p-8">
-              <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 mt-2 bg-gradient-to-r from-green-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Image className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-xl font-medium text-gray-800 mb-4 text-center">
