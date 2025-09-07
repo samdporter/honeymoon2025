@@ -49,7 +49,7 @@ export default function MainPage() {
             </div>
 
             {/* Navigation Cards */}
-            <div className="grid md:grid-cols-2 gap- max-w-2xl mx-auto mt-12">
+            <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto mt-12">
               {/* Honeymoon Fund Card */}
               <Link to="/honeymoon-fund">
                 <Card className="group cursor-pointer bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
